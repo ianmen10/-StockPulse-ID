@@ -7,7 +7,7 @@ Status values: `NOT STARTED` · `IN PROGRESS` · `REVIEW` · `COMPLETE` · `BLOC
 | Sprint | Name                                   | Status      |
 |--------|----------------------------------------|-------------|
 | 0      | Project Discovery & Foundation         | COMPLETE    |
-| 1      | PostgreSQL & Database Foundation       | NOT STARTED |
+| 1      | PostgreSQL & Database Foundation       | IN PROGRESS |
 | 2      | Yahoo Finance Data Engine              | NOT STARTED |
 | 3      | Data Synchronization                   | NOT STARTED |
 | 4      | REST API                               | NOT STARTED |
@@ -53,14 +53,32 @@ Status values: `NOT STARTED` · `IN PROGRESS` · `REVIEW` · `COMPLETE` · `BLOC
 
 ## Sprint 1 — PostgreSQL & Database Foundation
 
-**Status:** NOT STARTED
+**Status:** IN PROGRESS
+
+**Objective:** Build the PostgreSQL database foundation.
 
 **Tasks:**
-- [ ] PostgreSQL configuration (`DB_CONNECTION=pgsql`)
-- [ ] Migrations: `stocks`, `stock_quotes`, `stock_candles`, `watchlists`, `price_alerts`
-- [ ] Relationships, indexes, constraints, timestamps
-- [ ] Seed initial IDX stocks (BBCA.JK, BBRI.JK, BMRI.JK, TLKM.JK, ASII.JK, ANTM.JK, GOTO.JK, …)
-- [ ] Migration / relationship / integrity tests
+- [x] Docker PostgreSQL compose file (`docker/docker-compose.yml`, host port 5433)
+- [x] Laravel project created in `backend/` (Laravel 13.9, PHP 8.3)
+- [x] `.env` DB config scaffolded to `pgsql` (credentials pending user)
+- [x] Migrations: `stocks`, `stock_quotes`, `stock_candles`, `watchlists`, `price_alerts`
+- [x] Relationships, indexes, constraints, timestamps
+- [x] Models: Stock, StockQuote, StockCandle, Watchlist, PriceAlert + User relationships
+- [x] Factories for all new models
+- [x] `StockSeeder` (45 IDX stocks) + registered in `DatabaseSeeder`
+- [x] Unit tests — model relationships (10 tests, passing)
+- [x] Feature tests written — schema integrity + seeder (pending DB)
+- [ ] Run `php artisan migrate` (blocked on DB credentials)
+- [ ] Run `php artisan db:seed` (blocked on DB credentials)
+- [ ] Run full test suite (blocked on DB credentials)
+
+**Acceptance Criteria:**
+- [ ] PostgreSQL terhubung (pending user DB config)
+- [ ] Migration berjalan (pending)
+- [ ] Seed berjalan (pending)
+- [ ] Relationships berjalan (unit tests pass)
+- [ ] Indexes tersedia (feature tests pending)
+- [ ] Tests berhasil (unit pass; feature pending)
 
 ## Sprint 2 — Yahoo Finance Data Engine
 
